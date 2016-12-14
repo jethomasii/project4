@@ -32,7 +32,7 @@ class ConnectTasksAndUsers extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
           #drop indexes
-          $table->dropForeign('tasks_user_id_foereign');
+          $table->dropForeign('tasks_user_id_foreign');
           $table->dropColumn('user_id');
         });
     }
