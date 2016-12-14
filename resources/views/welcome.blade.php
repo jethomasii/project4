@@ -3,5 +3,5 @@
 @section('title', 'Welcome to Foobooks')
 
 @section('content')
-    Welcome to Foobooks.
+    Welcome to Project4 Task Manager.
 @endsection
