@@ -17,8 +17,23 @@
 <body>
 
     <header>
-        <a href='/'>Home</a>
+
     </header>
+
+    <nav>
+      <ul>
+        @if(Auth::check())
+          <li><a href='/'>Home</a></li>
+          <li><a href='/tasks'>Tasks</a></li>
+          <li><a href='/logout'>Logout</a></li>
+        @else
+          <li><a href='/'>Home</a></li>
+          <li><a href='/login'>Login</a></li>
+          <li><a href='/register'>Register</a></li>
+        @endif
+      </ul>
+    </nav>
+
 
     <section>
         {{-- Main page content will be yielded here --}}
