@@ -23,8 +23,22 @@ class TaskController extends Controller
           $tasks = [];
       }
 
+      $completeTasks = [];
+      $pendingTasks = [];
+
+      foreach ($tasks as $task) {
+        if ($task->complete) {
+          array_push ($completeTasks, $task);
+        }
+        else {
+          array_push ($pendingTasks, $task);
+        }
+      }
+
       return view('task.index')->with([
-          'tasks' => $tasks
+          'tasks' => $tasks,
+          'completeTasks' => $completeTasks,
+          'pendingTasks' => $pendingTasks,
       ]);
     }
 }
