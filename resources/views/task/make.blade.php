@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Edit Task
+    Make a Task
 @endsection
 
 @section('content')

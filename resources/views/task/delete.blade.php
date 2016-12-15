@@ -5,10 +5,10 @@
 @endsection
 
 @section('title')
-    Edit Task
+    Delete Task
 @endsection
 
 @section('content')
 
-    <p>Fun fact: this does nothing</p>
+      <h1>Delete Task:</h1>
 @endsection

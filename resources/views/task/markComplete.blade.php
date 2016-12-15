@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Edit Task
+    Mark Task Complete
 @endsection
 
 @section('content')
