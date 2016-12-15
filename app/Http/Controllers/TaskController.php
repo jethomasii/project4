@@ -10,7 +10,7 @@ class TaskController extends Controller
 {
     //
 
-    public function index(Request $request) {
+    public function getTasks(Request $request) {
 
       $user = $request->user();
 
@@ -35,10 +35,23 @@ class TaskController extends Controller
         }
       }
 
-      return view('task.index')->with([
-          'tasks' => $tasks,
-          'completeTasks' => $completeTasks,
-          'pendingTasks' => $pendingTasks,
-      ]);
+      if ($request->is('tasks/pending')) {
+          return view('task.pending')->with([
+            'pendingTasks' => $pendingTasks,
+          ]);
+      }
+      elseif ($request->is('tasks/complete')) {
+          return view('task.complete')->with([
+            'completeTasks' => $completeTasks,
+          ]);
+      }
+      else {
+        return view('task.index')->with([
+            'tasks' => $tasks,
+            'completeTasks' => $completeTasks,
+            'pendingTasks' => $pendingTasks,
+        ]);
+      }
+
     }
 }

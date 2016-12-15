@@ -18,8 +18,12 @@
 /*
  * Task routes
  */
- # Index, show all the tasks
-Route::get('/tasks', 'TaskController@index')->name('tasks.index')->middleware('auth');
+ # Main tasks page show all, show all the tasks
+Route::get('/tasks', 'TaskController@getTasks')->name('tasks.getTasks')->middleware('auth');
+# Pending tasks page, show just pending, pass same tasks cause screw making bunch of different ones.
+Route::get('/tasks/pending', 'TaskController@getTasks')->name('tasks.getTasks')->middleware('auth');
+# Same thing for complete
+Route::get('/tasks/complete', 'TaskController@getTasks')->name('tasks.getTasks')->middleware('auth');
 
 
 Route::get('/', 'PageController@welcome');
