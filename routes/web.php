@@ -32,8 +32,10 @@ Route::post('/tasks/save', 'TaskController@save')->name('tasks.saveTask');
 Route::get('/tasks/{id}/edit', 'TaskController@edit')->name('tasks.edit');
 # Actually edit a task
 Route::put('/tasks/{id}', 'TaskController@update')->name('tasks.update');
+# Confirm mark completeTask
+Route::get('/tasks/{id}/mark-complete', 'TaskController@markComplete')->name('tasks.markComplete');
 # Confirm Delete
-Route::get('/tasks/{id}/delete', 'TaskController@delete')->name('tasks.delte');
+Route::get('/tasks/{id}/delete', 'TaskController@delete')->name('tasks.delete');
 # Delete
 Route::delete('/tasks/{id}', 'TaskController@purge')->name('tasks.purge');
 
@@ -43,7 +45,3 @@ Route::get('/', 'PageController@welcome');
 
 Auth::routes();
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');

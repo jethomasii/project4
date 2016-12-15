@@ -10,6 +10,14 @@ class TaskController extends Controller
 {
     //
 
+    /*
+     * getTasks
+     * @param $request
+     * returns $tasks (all tasks)
+     * returns $completeTasks (tasks marked complete)
+     * returns $pendingTasks (tasks not marked complete)
+     */
+
     public function getTasks(Request $request) {
 
       $user = $request->user();
@@ -52,6 +60,55 @@ class TaskController extends Controller
             'pendingTasks' => $pendingTasks,
         ]);
       }
+
+    }
+
+    /*
+     * make - form to make a new task
+     */
+    public function make() {
+      return view('task.make');
+    }
+
+    /*
+     * save - saves a task mad with make
+     */
+    public function save(Request $request) {
+
+    }
+
+    /*
+     * edit - presents form to update a task
+     */
+    public function edit($id) {
+       return view('task.edit');
+    }
+
+    /*
+     * update - stores information from Edit
+     */
+    public function update(Request $request) {
+
+    }
+
+    /*
+     * markComplete - confirms a task will be marked complete
+     */
+    public function markComplete($id) {
+      return view('task.markComplete');
+    }
+
+    /*
+     * delete - confirms deletion before purge
+     */
+    public function delete($id) {
+      return view('task.delete');
+    }
+
+    /*
+     * purge - removes item from tasks Database
+     */
+    public function purge($id) {
 
     }
 }
