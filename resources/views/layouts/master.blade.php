@@ -25,7 +25,7 @@
     <nav>
       <ul>
         @if(Auth::check())
-          <li><a href='/'>Home</a></li>
+          <li><a href='/tasks/make'>Make a Task</a></li>
           <li><a href='/tasks'>All Tasks</a></li>
           <li><a href='/tasks/pending'>Pending Tasks</a></li>
           <li><a href='/tasks/complete'>Complete Tasks</a></li>
