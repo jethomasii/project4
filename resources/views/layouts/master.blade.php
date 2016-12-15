@@ -10,6 +10,8 @@
 
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
+    <link href='/css/main.css' type='text/css' rel='stylesheet'>
+
     {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
     @yield('head')
 
@@ -17,14 +19,16 @@
 <body>
 
     <header>
-
+        <h1>Project 4: Task Manager</h1>
     </header>
 
     <nav>
       <ul>
         @if(Auth::check())
           <li><a href='/'>Home</a></li>
-          <li><a href='/tasks'>Tasks</a></li>
+          <li><a href='/tasks'>All Tasks</a></li>
+          <li><a href='/tasks/pending'>Pending Tasks</a></li>
+          <li><a href='/tasks/complete'>Complete Tasks</a></li>
           <li><a href='/logout'>Logout</a></li>
         @else
           <li><a href='/'>Home</a></li>

@@ -5,36 +5,29 @@
 @endsection
 
 @section('title')
-    View all Tasks
+    All Tasks
 @endsection
 
 @section('content')
 
-    <h1>Your Tasks</h1>
+    <h1>All Tasks:</h1>
 
     @if(sizeof($tasks) == 0)
         You have not added any tasks, go <a href='/tasks/create'>here</a> to get started.
     @else
-        <div id='tasks' class='cf'>
 
-            <h2>Complete:</h2>
-
-            @foreach($completeTasks as $task)
-
-                <section class='task'>
-                    <p>{{ $task->description }}, Complete: {{ $task->complete }}</p>
-                </section>
-            @endforeach
-
-            <h2>Incomplete:</h2>
+          <ul id='Tasks'>
 
             @foreach($pendingTasks as $task)
-
-                <section class='task'>
-                    <p>{{ $task->description }}, Complete: {{ $task->complete }}</p>
-                </section>
+                <li class='pendingTask'>{{ $task->description }}, Complete: {{ $task->complete }}</li>
             @endforeach
-        </div>
+
+            @foreach($completeTasks as $task)
+                <li class='completeTask'>{{ $task->description }}, Complete: {{ $task->complete }}</li>
+            @endforeach
+
+          </ul>
+
     @endif
 
 @endsection
