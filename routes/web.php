@@ -24,6 +24,19 @@ Route::get('/tasks', 'TaskController@getTasks')->name('tasks.getTasks')->middlew
 Route::get('/tasks/pending', 'TaskController@getTasks')->name('tasks.getTasks')->middleware('auth');
 # Same thing for complete
 Route::get('/tasks/complete', 'TaskController@getTasks')->name('tasks.getTasks')->middleware('auth');
+# Form to make a task route
+Route::get('/tasks/make', 'TaskController@make')->name('tasks.makeTask')->middleware('auth');
+# Process make a task Form
+Route::post('/tasks/save', 'TaskController@save')->name('tasks.saveTask');
+# Form to Edit a task
+Route::get('/tasks/{id}/edit', 'TaskController@edit')->name('tasks.edit');
+# Actually edit a task
+Route::put('/tasks/{id}', 'TaskController@update')->name('tasks.update');
+# Confirm Delete
+Route::get('/tasks/{id}/delete', 'TaskController@delete')->name('tasks.delte');
+# Delete
+Route::delete('/tasks/{id}', 'TaskController@purge')->name('tasks.purge');
+
 
 
 Route::get('/', 'PageController@welcome');

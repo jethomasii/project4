@@ -46,7 +46,7 @@ class TaskController extends Controller
           ]);
       }
       else {
-        return view('task.index')->with([
+        return view('task.all')->with([
             'tasks' => $tasks,
             'completeTasks' => $completeTasks,
             'pendingTasks' => $pendingTasks,

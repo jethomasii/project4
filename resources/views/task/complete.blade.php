@@ -19,7 +19,15 @@
           <ul id='Tasks'>
 
             @foreach($completeTasks as $task)
-                <li>{{ $task->description }}, Complete: {{ $task->complete }}</li>
+                <li>
+                  <p>
+                    {{ $task->description }}
+                    <br>
+                    Created: {{ date('F d, Y: H:m', strtotime($task->created_at)) }},
+                    Completed: {{ date('F d, Y: H:m', strtotime($task->updated_at)) }}
+                  </p>
+                  <a class='button' href='/task/{{ $task->id }}/delete'>Delete</a>
+                </li>
             @endforeach
 
           </ul>

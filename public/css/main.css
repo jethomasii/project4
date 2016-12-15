@@ -50,15 +50,22 @@ ul#Tasks {
 ul#Tasks li {
   ##border-top: 1px solid #000;
   border-bottom: 1px solid #000;
+  margin-left: 1em;
   list-style: none;
 
 }
 
-.pendingTask {
+a.button {
+    color: #610000;
+    text-decoration:none;
+    padding:4px;
+}
+
+.pendingTask p {
   font-weight: bold;
 }
 
-.completeTask {
+.completeTask p {
   text-decoration: line-through;
   color: #DCDCDC;
 }
