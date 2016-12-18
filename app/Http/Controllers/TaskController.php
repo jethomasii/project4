@@ -122,7 +122,12 @@ class TaskController extends Controller
      * delete - confirms deletion before purge
      */
     public function delete($id) {
-      return view('task.delete');
+
+      $task = Task::find($id);
+
+      return view('task.delete')->with([
+        'task' => $task,
+      ]);
     }
 
     /*
@@ -130,5 +135,20 @@ class TaskController extends Controller
      */
     public function purge($id) {
 
+      // Locate the task
+      $task = Task::find($id);
+
+      // Splash if not found
+      if (is_null($task)) {
+        Session::flash('message_flash', 'Unable to locate task');
+        return redirect('/tasks');
+      }
+
+      // Delete $task
+      $task->delete();
+
+      // Tell the world
+      Session::flash('flash_message', 'Deleted Task: '.$task->descrition);
+      return redirect('/tasks');
     }
 }
