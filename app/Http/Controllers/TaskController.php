@@ -174,7 +174,7 @@ class TaskController extends Controller
       $task->save();
 
       // Let the user know, get on with it.
-      Session::flash('flash_message', 'Completed: '.$task->descritpion);
+      Session::flash('flash_message', 'Completed: '.$task->description);
       return redirect('/tasks');
     }
 
@@ -208,7 +208,7 @@ class TaskController extends Controller
       $task->delete();
 
       // Tell the world
-      Session::flash('flash_message', 'Deleted Task: '.$task->descrition);
+      Session::flash('flash_message', 'Deleted Task: '.$task->description);
       return redirect('/tasks');
     }
 }
