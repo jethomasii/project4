@@ -101,13 +101,45 @@ class TaskController extends Controller
      * edit - presents form to update a task
      */
     public function edit($id) {
-       return view('task.edit');
+
+      $task = Task::find($id);
+
+      if(is_null($task)) {
+        Session::flash('flash_message', 'Unable to locate task');
+        return redirect('/tasks');
+      }
+
+      return view('task.edit')->with([
+        'task' => $task,
+      ]);
     }
 
     /*
      * update - stores information from Edit
      */
     public function update(Request $request) {
+
+      $this->validate($request, [
+        'description' => 'required|min:1',
+      ]);
+
+      $task = Task::find($request->id);
+
+      if(is_null($task)) {
+        Session::flash('flash_message', 'Unable to locate task');
+        return redirect('/tasks');
+      }
+
+      $task->description = $request->description;
+
+      if($request->complete) {
+        $task->complete = 1;
+      }
+
+      $task->save();
+
+      Session::flash('flash_message', 'Updated Task!');
+      return redirect('/tasks');
 
     }
 
