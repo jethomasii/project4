@@ -13,7 +13,7 @@
     <h1>All Tasks:</h1>
 
     @if(sizeof($tasks) == 0)
-        You have not added any tasks, go <a href='/tasks/create'>here</a> to get started.
+        You have not added any tasks, go <a href='/tasks/make'>here</a> to get started.
     @else
 
           <ul id='Tasks'>
