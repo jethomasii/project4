@@ -157,7 +157,25 @@ class TaskController extends Controller
      * markComplete - confirms a task will be marked complete
      */
     public function markComplete($id) {
-      return view('task.markComplete');
+
+      // Recover the task.
+      $task = Task::find($id);
+
+      // Verify it's actually recovered
+      if(is_null($task)) {
+        Session::flash('flash_message', 'Unable to locate task');
+        return redirect('/tasks');
+      }
+
+      // Mark complete
+      $task->complete = 1;
+
+      // save
+      $task->save();
+
+      // Let the user know, get on with it.
+      Session::flash('flash_message', 'Completed: '.$task->descritpion);
+      return redirect('/tasks');
     }
 
     /*
