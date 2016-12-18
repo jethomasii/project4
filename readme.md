@@ -4,13 +4,13 @@
 https://p4.jethomasii.me
 
 ## Description
-This is my third project for CSCI E-15. It's a task manager, you know for Tasks!! 
+This is my fourth project for CSCI E-15. It's a task manager, you know for Tasks!! 
 
 ## Demo
 one day they'll be a link here I promise.
 
 ## Misc
-Not yet.
+Nothing to add.
 
 # Outside Materials
-Not yet.
+I used the laravel docs, php docs and class notes. I did not use any outside packages.
