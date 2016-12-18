@@ -27,7 +27,7 @@ Route::get('/tasks/complete', 'TaskController@getTasks')->name('tasks.getTasks')
 # Form to make a task route
 Route::get('/tasks/make', 'TaskController@make')->name('tasks.makeTask')->middleware('auth');
 # Process make a task Form
-Route::post('/tasks/save', 'TaskController@save')->name('tasks.saveTask');
+Route::post('/tasks', 'TaskController@save')->name('tasks.saveTask');
 # Form to Edit a task
 Route::get('/tasks/{id}/edit', 'TaskController@edit')->name('tasks.edit');
 # Actually edit a task

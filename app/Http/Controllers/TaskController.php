@@ -5,6 +5,7 @@ namespace project4\Http\Controllers;
 use Illuminate\Http\Request;
 use project4\Http\Requests;
 use project4\Task;
+use Session;
 
 class TaskController extends Controller
 {
@@ -74,7 +75,26 @@ class TaskController extends Controller
      * save - saves a task mad with make
      */
     public function save(Request $request) {
+      # Validate
+      $this->validate($request, [
+        'description' => 'required|min:1',
+      ]);
 
+      $task = new Task();
+      $task->description = $request->input('description');
+      $task->user_id = $request->user()->id;
+
+      if($request->complete) {
+        $task->complete = 1;
+      }
+      else { $task->complete= 0; }
+
+
+      $task->save();
+
+      Session::flash('flash_message', 'Added Task: '.$task->description);
+
+      return redirect('/tasks');
     }
 
     /*
