@@ -102,13 +102,16 @@ class TaskController extends Controller
      */
     public function edit($id) {
 
+      // Recover the task.
       $task = Task::find($id);
 
+      // Verify it's actually recovered
       if(is_null($task)) {
         Session::flash('flash_message', 'Unable to locate task');
         return redirect('/tasks');
       }
 
+      // Return recovered task to view.
       return view('task.edit')->with([
         'task' => $task,
       ]);
@@ -119,25 +122,32 @@ class TaskController extends Controller
      */
     public function update(Request $request) {
 
+      // Validate the request actually has a description.
       $this->validate($request, [
         'description' => 'required|min:1',
       ]);
 
+      // Pull the original task.
       $task = Task::find($request->id);
 
+      // Verify it was pulled.
       if(is_null($task)) {
         Session::flash('flash_message', 'Unable to locate task');
         return redirect('/tasks');
       }
 
+      // Set the description on the new task object.
       $task->description = $request->description;
 
+      // Set complete if necessary.
       if($request->complete) {
         $task->complete = 1;
       }
 
+      // Save new task to old.
       $task->save();
 
+      // Return to taks list, let the user know.
       Session::flash('flash_message', 'Updated Task!');
       return redirect('/tasks');
 
